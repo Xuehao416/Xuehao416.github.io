@@ -1,8 +1,11 @@
 ---
 import type { MarkdownHeading } from "astro";
+import { siteConfig } from "../../config";
+import { url } from "../../utils/url-utils";
 import Categories from "./Categories.astro";
 import Profile from "./Profile.astro";
 import Tag from "./Tags.astro";
+import TOC from "./TOC.astro";
 
 interface Props {
 	class?: string;
@@ -10,12 +13,25 @@ interface Props {
 }
 
 const className = Astro.props.class;
+const headings = Astro.props.headings ?? [];
+const isPostsRoute = Astro.url.pathname.startsWith(url("/posts/"));
+const hasToc = siteConfig.toc.enable && isPostsRoute && headings.length > 0;
 ---
 <div id="sidebar" class:list={[className, "w-full"]}>
     <div class="flex flex-col w-full gap-4 mb-4">
         <Profile></Profile>
     </div>
-    <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4">
+    <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky">
+        <div id="toc" class="w-full transition-swup-fade empty:hidden">{hasToc && (
+            <div class="pb-4 card-base onload-animation" style="animation-delay: 100ms">
+                <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-8 mt-4 mb-2
+                    before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+                    before:absolute before:left-[-16px] before:top-[5.5px]">目录</div>
+                <div id="toc-inner-wrapper" class="relative isolate px-3 max-h-[60vh] overflow-y-auto overflow-x-hidden hide-scrollbar">
+                    <TOC headings={headings}></TOC>
+                </div>
+            </div>
+        )}</div>
         <Categories class="onload-animation" style="animation-delay: 150ms"></Categories>
         <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
     </div>
