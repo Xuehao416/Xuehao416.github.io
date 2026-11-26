@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="540" viewBox="0 0 1040 540" role="img" aria-labelledby="diagram-title">
+  <title id="diagram-title">FlashRSI 主要架构：装配、评估、生成候选</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 1.5 L 8.5 5 L 1 8.5" fill="none" stroke="#2D3748" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <marker id="arrow-dashed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1.5 1.5 L 8.5 5 L 1.5 8.5" fill="none" stroke="#64748B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <style>
+      .base-font {
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+      }
+      .main-title {
+        font-size: 21px;
+        font-weight: 700;
+        fill: #244082;
+        letter-spacing: 0.3px;
+      }
+      .section-label {
+        font-size: 13.5px;
+        font-weight: 600;
+        fill: #525B6B;
+      }
+      .box {
+        fill: #FFFFFF;
+        stroke: #C9C4B8;
+        stroke-width: 1.25;
+      }
+      .box-highlight {
+        fill: #F2F5FC;
+        stroke: #244082;
+        stroke-width: 1.7;
+      }
+      .box-title {
+        font-size: 15px;
+        font-weight: 700;
+        fill: #1F2937;
+        text-anchor: middle;
+      }
+      .box-title-blue {
+        font-size: 15px;
+        font-weight: 700;
+        fill: #244082;
+        text-anchor: middle;
+      }
+      .box-title-compact {
+        font-size: 14.5px;
+        font-weight: 700;
+        fill: #1F2937;
+        text-anchor: middle;
+      }
+      .box-title-blue-compact {
+        font-size: 14.5px;
+        font-weight: 700;
+        fill: #244082;
+        text-anchor: middle;
+      }
+      .box-sub {
+        font-size: 12px;
+        font-weight: 400;
+        fill: #5A6270;
+        text-anchor: middle;
+      }
+      .box-sub-sm {
+        font-size: 11.5px;
+        font-weight: 400;
+        fill: #64748B;
+        text-anchor: middle;
+      }
+      .arrow-line {
+        fill: none;
+        stroke: #2D3748;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+      }
+      .loop-line {
+        fill: none;
+        stroke: #64748B;
+        stroke-width: 1.4;
+        stroke-dasharray: 6 5;
+        stroke-linecap: round;
+      }
+      .loop-label {
+        font-size: 11.5px;
+        font-weight: 500;
+        fill: #64748B;
+        text-anchor: middle;
+      }
+    </style>
+  </defs>
+
+  <!-- Outer Card Background -->
+  <rect x="0.75" y="0.75" width="1038.5" height="538.5" rx="12" fill="#FAF8F4" stroke="#E5E0D5" stroke-width="1.5" />
+
+  <!-- Top Accent Rule & Title -->
+  <line x1="35" y1="24" x2="1005" y2="24" stroke="#244082" stroke-width="1.6" />
+  <text x="35" y="55" class="base-font main-title">主要架构 · 装配、评估、生成候选</text>
+
+  <!-- ================= A · 实验装配 ================= -->
+  <text x="35" y="88" class="base-font section-label">A · 实验装配</text>
+
+  <!-- A1: CLI / YAML -->
+  <rect x="35" y="98" width="196" height="60" rx="6" class="box" />
+  <text x="133" y="124" class="base-font box-title">CLI / YAML</text>
+  <text x="133" y="145" class="base-font box-sub">选择组件与配置</text>
+
+  <line x1="237" y1="128" x2="273" y2="128" class="arrow-line" marker-end="url(#arrow)" />
+
+  <!-- A2: Runner -->
+  <rect x="279" y="98" width="292" height="60" rx="6" class="box" />
+  <text x="425" y="124" class="base-font box-title">Runner</text>
+  <text x="425" y="145" class="base-font box-sub">创建 Target · Benchmark · Worker</text>
+
+  <line x1="577" y1="128" x2="613" y2="128" class="arrow-line" marker-end="url(#arrow)" />
+
+  <!-- A3: Algorithm.evolve() -->
+  <rect x="619" y="98" width="386" height="60" rx="6" class="box-highlight" />
+  <text x="812" y="124" class="base-font box-title-blue">Algorithm.evolve()</text>
+  <text x="812" y="145" class="base-font box-sub">搜索结束后对最终版本运行 test</text>
+
+  <!-- ================= 六个核心概念 ================= -->
+  <text x="35" y="187" class="base-font section-label">六个核心概念</text>
+
+  <!-- Concept 1: Algorithm -->
+  <rect x="35" y="197" width="150" height="84" rx="6" class="box" />
+  <text x="110" y="222" class="base-font box-title-blue">Algorithm</text>
+  <text x="110" y="244" class="base-font box-sub">演化算法 · 决策</text>
+  <text x="110" y="264" class="base-font box-sub-sm">何时评估 · 如何选择</text>
+
+  <!-- Concept 2: Worker -->
+  <rect x="199" y="197" width="150" height="84" rx="6" class="box" />
+  <text x="274" y="222" class="base-font box-title-blue">Worker</text>
+  <text x="274" y="244" class="base-font box-sub">工作者 · 修改</text>
+  <text x="274" y="264" class="base-font box-sub-sm">读反馈写修改</text>
+
+  <!-- Concept 3: Target -->
+  <rect x="363" y="197" width="150" height="84" rx="6" class="box" />
+  <text x="438" y="222" class="base-font box-title-blue">Target</text>
+  <text x="438" y="244" class="base-font box-sub">目标 · 执行任务</text>
+  <text x="438" y="264" class="base-font box-sub-sm">用 Snapshot 做题</text>
+
+  <!-- Concept 4: Benchmark -->
+  <rect x="527" y="197" width="150" height="84" rx="6" class="box" />
+  <text x="602" y="222" class="base-font box-title-blue">Benchmark</text>
+  <text x="602" y="244" class="base-font box-sub">基准 · 评分</text>
+  <text x="602" y="264" class="base-font box-sub-sm">任务与逐题反馈</text>
+
+  <!-- Concept 5: Snapshot -->
+  <rect x="691" y="197" width="150" height="84" rx="6" class="box" />
+  <text x="766" y="222" class="base-font box-title-blue">Snapshot</text>
+  <text x="766" y="244" class="base-font box-sub">一个版本</text>
+  <text x="766" y="264" class="base-font box-sub-sm">prompt · skill · 工具等</text>
+
+  <!-- Concept 6: Trajectory -->
+  <rect x="855" y="197" width="150" height="84" rx="6" class="box" />
+  <text x="930" y="222" class="base-font box-title-blue">Trajectory</text>
+  <text x="930" y="244" class="base-font box-sub">运行时证据</text>
+  <text x="930" y="264" class="base-font box-sub-sm">执行过程记录</text>
+
+  <!-- ================= B · 一次评估 ================= -->
+  <text x="35" y="310" class="base-font section-label">B · 一次评估</text>
+
+  <!-- B1: Benchmark -->
+  <rect x="35" y="320" width="170" height="60" rx="6" class="box" />
+  <text x="120" y="346" class="base-font box-title-compact">Benchmark</text>
+  <text x="120" y="367" class="base-font box-sub">train batch 任务</text>
+
+  <line x1="209" y1="350" x2="231" y2="350" class="arrow-line" marker-end="url(#arrow)" />
+
+  <!-- B2: Target.rollout -->
+  <rect x="235" y="320" width="170" height="60" rx="6" class="box" />
+  <text x="320" y="346" class="base-font box-title-compact">Target.rollout</text>
+  <text x="320" y="367" class="base-font box-sub">当前 Snapshot 做题</text>
+
+  <line x1="409" y1="350" x2="431" y2="350" class="arrow-line" marker-end="url(#arrow)" />
+
+  <!-- B3: 轨迹 -->
+  <rect x="435" y="320" width="170" height="60" rx="6" class="box" />
+  <text x="520" y="346" class="base-font box-title-compact">轨迹</text>
+  <text x="520" y="367" class="base-font box-sub">输出与执行过程</text>
+
+  <line x1="609" y1="350" x2="631" y2="350" class="arrow-line" marker-end="url(#arrow)" />
+
+  <!-- B4: Benchmark.grade -->
+  <rect x="635" y="320" width="170" height="60" rx="6" class="box" />
+  <text x="720" y="346" class="base-font box-title-compact">Benchmark.grade</text>
+  <text x="720" y="367" class="base-font box-sub">对轨迹评分</text>
+
+  <line x1="809" y1="350" x2="831" y2="350" class="arrow-line" marker-end="url(#arrow)" />
+
+  <!-- B5: Algorithm -->
+  <rect x="835" y="320" width="170" height="60" rx="6" class="box" />
+  <text x="920" y="346" class="base-font box-title-blue-compact">Algorithm</text>
+  <text x="920" y="367" class="base-font box-sub">收到带分数的反馈</text>
+
+  <!-- ================= C · 生成候选 ================= -->
+  <text x="35" y="409" class="base-font section-label">C · 生成候选（SkillOpt 快速更新）</text>
+
+  <!-- C1: Algorithm -->
+  <rect x="35" y="419" width="170" height="60" rx="6" class="box" />
+  <text x="120" y="445" class="base-font box-title-blue-compact">Algorithm</text>
+  <text x="120" y="466" class="base-font box-sub">整理证据与 skill 文件</text>
+
+  <line x1="209" y1="449" x2="231" y2="449" class="arrow-line" marker-end="url(#arrow)" />
+
+  <!-- C2: Worker.ask -->
+  <rect x="235" y="419" width="170" height="60" rx="6" class="box" />
+  <text x="320" y="445" class="base-font box-title-compact">Worker.ask</text>
+  <text x="320" y="466" class="base-font box-sub">JSON 修改提案</text>
+
+  <line x1="409" y1="449" x2="431" y2="449" class="arrow-line" marker-end="url(#arrow)" />
+
+  <!-- C3: Algorithm -->
+  <rect x="435" y="419" width="170" height="60" rx="6" class="box" />
+  <text x="520" y="445" class="base-font box-title-blue-compact">Algorithm</text>
+  <text x="520" y="466" class="base-font box-sub">解析 · 合并 · 应用补丁</text>
+
+  <line x1="609" y1="449" x2="631" y2="449" class="arrow-line" marker-end="url(#arrow)" />
+
+  <!-- C4: 候选 Snapshot -->
+  <rect x="635" y="419" width="170" height="60" rx="6" class="box" />
+  <text x="720" y="445" class="base-font box-title-compact">候选 Snapshot</text>
+  <text x="720" y="466" class="base-font box-sub">基于当前版本创建</text>
+
+  <line x1="809" y1="449" x2="831" y2="449" class="arrow-line" marker-end="url(#arrow)" />
+
+  <!-- C5: Algorithm 选择 -->
+  <rect x="835" y="419" width="170" height="60" rx="6" class="box" />
+  <text x="920" y="445" class="base-font box-title-blue-compact">Algorithm 选择</text>
+  <text x="920" y="466" class="base-font box-sub">dev 评估，严格优于最佳</text>
+
+  <!-- Feedback Loop: C5 -> C1 -->
+  <path d="M 920 479 L 920 499 Q 920 510 906 510 L 134 510 Q 120 510 120 499 L 120 484" class="loop-line" marker-end="url(#arrow-dashed)" />
+  <rect x="412" y="499" width="216" height="22" rx="4" fill="#FAF8F4" />
+  <text x="520" y="514" class="base-font loop-label">选中或保留当前版本，继续后续 batch</text>
+</svg>
