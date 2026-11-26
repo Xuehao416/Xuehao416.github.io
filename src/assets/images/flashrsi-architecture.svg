@@ -24,11 +24,11 @@
       }
       .box {
         fill: #FFFFFF;
-        stroke: #C9C4B8;
+        stroke: #CBD5E1;
         stroke-width: 1.25;
       }
       .box-highlight {
-        fill: #F2F5FC;
+        fill: #EEF4FF;
         stroke: #244082;
         stroke-width: 1.7;
       }
@@ -91,7 +91,7 @@
   </defs>
 
   <!-- Outer Card Background -->
-  <rect x="0.75" y="0.75" width="1038.5" height="538.5" rx="12" fill="#FAF8F4" stroke="#E5E0D5" stroke-width="1.5" />
+  <rect x="0.75" y="0.75" width="1038.5" height="538.5" rx="12" fill="#F8FAFC" stroke="#DCE4F0" stroke-width="1.5" />
 
   <!-- Top Accent Rule & Title -->
   <line x1="35" y1="24" x2="1005" y2="24" stroke="#244082" stroke-width="1.6" />
@@ -232,6 +232,6 @@
 
   <!-- Feedback Loop: C5 -> C1 -->
   <path d="M 920 479 L 920 499 Q 920 510 906 510 L 134 510 Q 120 510 120 499 L 120 484" class="loop-line" marker-end="url(#arrow-dashed)" />
-  <rect x="412" y="499" width="216" height="22" rx="4" fill="#FAF8F4" />
+  <rect x="412" y="499" width="216" height="22" rx="4" fill="#F8FAFC" />
   <text x="520" y="514" class="base-font loop-label">选中或保留当前版本，继续后续 batch</text>
 </svg>

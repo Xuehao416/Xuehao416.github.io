@@ -1,18 +1,40 @@
 .custom-md
 
   blockquote.admonition
+    margin: 1.35rem 0
+    padding: 0.95rem 1.25rem 0.95rem 1.35rem
+    border-radius: 0.75rem
+    border-left: none
+    background: oklch(0.97 0.012 var(--hue))
+    overflow: hidden
+
+    &:before
+      left: 0
+      top: 0
+      width: 4px
+      height: 100%
+      border-radius: 0
+
+    > p:first-of-type
+      margin-top: 0.4rem
+
+    > *:last-child
+      margin-bottom: 0
+
     .bdm-title
       display: flex
       align-items: center
-      margin-bottom: -.9rem
-      font-weight: bold
+      margin-bottom: 0.25rem
+      font-weight: 700
+      font-size: 0.925rem
+      line-height: 1.4
 
       &:before
         content: ' '
         display: inline-block
         font-size: inherit
         overflow: visible
-        margin-right: .6rem
+        margin-right: .55rem
         height: 1em
         width: 1em
         vertical-align: -.126em
@@ -21,6 +43,7 @@
         mask-repeat: no-repeat
         transform: translateY(-0.0625rem)
     &.bdm-tip
+      background: unquote("color-mix(in oklch, var(--admonitions-color-tip) 9%, var(--card-bg))")
       .bdm-title
         color: var(--admonitions-color-tip)
 
@@ -31,6 +54,7 @@
       &:before
         background: var(--admonitions-color-tip)
     &.bdm-note
+      background: unquote("color-mix(in oklch, var(--admonitions-color-note) 9%, var(--card-bg))")
       .bdm-title
         color: var(--admonitions-color-note)
 
@@ -41,6 +65,7 @@
       &:before
         background: var(--admonitions-color-note)
     &.bdm-important
+      background: unquote("color-mix(in oklch, var(--admonitions-color-important) 9%, var(--card-bg))")
       .bdm-title
         color: var(--admonitions-color-important)
 
@@ -51,6 +76,7 @@
       &:before
         background: var(--admonitions-color-important)
     &.bdm-warning
+      background: unquote("color-mix(in oklch, var(--admonitions-color-warning) 10%, var(--card-bg))")
       .bdm-title
         color: var(--admonitions-color-warning)
 
@@ -61,6 +87,7 @@
       &:before
         background: var(--admonitions-color-warning)
     &.bdm-caution
+      background: unquote("color-mix(in oklch, var(--admonitions-color-caution) 9%, var(--card-bg))")
       .bdm-title
         color: var(--admonitions-color-caution)
 

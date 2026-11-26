@@ -5,6 +5,34 @@
         @apply text-3xl;
     }
 
+    h2 {
+        margin-top: 2.75rem;
+        margin-bottom: 1.15rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--line-divider);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+    }
+
+    h3 {
+        margin-top: 2rem;
+        margin-bottom: 0.85rem;
+        font-weight: 700;
+    }
+
+    h4 {
+        margin-top: 1.85rem;
+        margin-bottom: 0.65rem;
+        padding-left: 0.75rem;
+        border-left: 3px solid var(--primary);
+        font-weight: 700;
+        line-height: 1.45;
+    }
+
+    p, li {
+        line-height: 1.8;
+    }
+
     h1, h2, h3, h4, h5, h6 {
         .anchor {
             @apply transition -m-0.5 ml-[0.2ch] p-0.5 select-none opacity-0 no-underline !important;
@@ -86,12 +114,84 @@
     }
 
     .expressive-code {
-        @apply my-4;
+        @apply my-5;
         ::selection {
             @apply bg-[var(--codeblock-selection)];
         }
     }
 
+    /* Light academic style for plain text flowcharts & pseudocode */
+    .expressive-code pre[data-language="text"] {
+        background: #F6F8FC !important;
+        border: 1px solid #DCE4F0 !important;
+        border-radius: 0.75rem;
+    }
+    .expressive-code pre[data-language="text"] code,
+    .expressive-code pre[data-language="text"] .ec-line,
+    .expressive-code pre[data-language="text"] .ec-line .code,
+    .expressive-code pre[data-language="text"] span {
+        color: #1E293B !important;
+    }
+    .expressive-code pre[data-language="text"]::before {
+        color: #475569 !important;
+        background: #E7EEF8 !important;
+    }
+
+    /* Academic card-style tables */
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 1.5rem 0;
+        font-size: 0.875rem;
+        line-height: 1.65;
+        border: 1px solid var(--line-divider);
+        border-radius: 0.75rem;
+        overflow: hidden;
+    }
+
+    thead {
+        background: oklch(0.965 0.012 var(--hue));
+    }
+
+    thead th {
+        padding: 0.7rem 0.9rem;
+        font-weight: 700;
+        color: oklch(0.28 0.025 var(--hue));
+        border-bottom: 1.5px solid var(--line-color);
+        vertical-align: middle;
+        min-width: 5.5rem;
+    }
+
+    tbody td {
+        padding: 0.65rem 0.9rem;
+        border-bottom: 1px solid var(--line-divider);
+        vertical-align: top;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    tbody tr:nth-child(even) {
+        background: rgba(15, 23, 42, 0.018);
+    }
+
+    tbody tr {
+        transition: background-color 150ms ease;
+    }
+
+    tbody tr:hover {
+        background: var(--btn-plain-bg-hover);
+    }
+
+    @media (max-width: 768px) {
+        table {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
 
     ul, ol {
         li::marker {
@@ -119,5 +219,34 @@
         overflow-x: auto;
         margin: 1em 0;
     }
-    
+
+}
+
+:root.dark .custom-md {
+    .expressive-code pre[data-language="text"] {
+        background: oklch(0.20 0.016 var(--hue)) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    .expressive-code pre[data-language="text"] code,
+    .expressive-code pre[data-language="text"] .ec-line,
+    .expressive-code pre[data-language="text"] .ec-line .code,
+    .expressive-code pre[data-language="text"] span {
+        color: #E2E8F0 !important;
+    }
+    .expressive-code pre[data-language="text"]::before {
+        color: oklch(0.75 0.1 var(--hue)) !important;
+        background: oklch(0.30 0.03 var(--hue)) !important;
+    }
+
+    thead {
+        background: oklch(0.27 0.02 var(--hue));
+    }
+
+    thead th {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    tbody tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.025);
+    }
 }

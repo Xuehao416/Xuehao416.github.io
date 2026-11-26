@@ -51,7 +51,7 @@ const filteredHeadings = headings.filter(
                     },
                 ]}
             >
-                <span class="line-clamp-2 leading-snug break-words min-w-0">{cleanText}</span>
+                <span class:list={["leading-snug break-words min-w-0", level >= 2 ? "line-clamp-1" : "line-clamp-2"]}>{cleanText}</span>
             </a>
         );
     })}

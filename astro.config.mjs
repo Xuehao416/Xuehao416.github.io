@@ -69,6 +69,9 @@ export default defineConfig({
 					'shellsession': {
 						showLineNumbers: false,
 					},
+					'text': {
+						showLineNumbers: false,
+					},
 				},
 			},
 			styleOverrides: {
